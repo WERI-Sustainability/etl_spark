@@ -29,7 +29,8 @@
   },
   {
     "ParameterKey": "pDatasetSchema",
-    "ParameterValue": "{\"date\":{\"type\": \"datetime\", \"format\": \"%m/%d/%Y\" }, \"country\": {\"type\": \"string\"}, \"load\": {\"type\": [\"float\", \"integer\"]},\"Distance\": {\"type\": [\"float\", \"integer\"]},\"mode\": {\"type\": \"string\"},\"vehicle\": {\"type\": \"string\"},\"refrigerant_Type\": {\"type\": \"string\"},\"refrigerant_Amount\": {\"type\": [\"float\", \"integer\"]}"
-  }
+    "ParameterValue": "{\"Date\":{\"type\": \"datetime\", \"format\": \"%m/%d/%Y\" },\"Country\":{\"type\": \"string\"},\"Load\":{\"type\": \"integer\"},\"Distance\":{\"type\": \"integer\"},\"Mode\":{\"type\": \"string\"}, \"Vehicle\":{\"type\": \"string\"}, \"Refrigerant_Type\":{\"type\": \"string\"}, \"Refrigerant_Amount\":{\"type\": \"integer\"}}"
+  },
+
 
 ]

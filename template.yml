@@ -1,6 +1,6 @@
 Transform: AWS::Serverless-2016-10-31
 
-Description: "This is a WERI template to create ETL pipeline pattern with AWS Step Functions"
+Description: "This is a template to create ETL pipeline pattern with AWS Step Functions"
 
 Parameters: 
 
@@ -73,9 +73,9 @@ Resources:
         spark = glueContext.spark_session
         job = Job(glueContext)
         job.init(args['JOB_NAME'], args)
-        Date, Country, Load, Distance, Mode, Vehicle, Refrigerant_Type, Refrigerant_Amount
+
         datasource0 = glueContext.create_dynamic_frame.from_catalog(database = "${GlueDB}", table_name = "${pStageFolder}", transformation_ctx = "datasource0")
-        applymapping1 = ApplyMapping.apply(frame = datasource0, mappings = [("date", "string", "date", "string"), ("country", "string", "country", "string"), ("load", "integer", "load", "integer"), ("distance", "integer", "distance", "integer"),  ("mode", "string", "mode", "string"), ("vehicle", "string", "vehicle", "string"), ("refrigerant_type", "string", "refrigerant_type", "string"), ("refrigerant_amount", "integer", "refrigerant_amount", "integer"), ("year", "long", "year", "int"), ("month", "long", "month", "int"), ("day", "long", "day", "int")], transformation_ctx = "applymapping1")
+        applymapping1 = ApplyMapping.apply(frame = datasource0, mappings = [("date", "string", "date", "string"), ("country", "string", "country", "string"), ("load", "integer", "load", "integer"), ("distance", "integer", "distance", "integer"), ("mode", "string", "mode", "string"), ("vehicle", "string", "vehicle", "string"), ("refrigerant_type", "string", "refrigerant_type", "string"), ("refrigerant_amount", "integer", "refrigerant_amount", "integer"), ("year", "long", "year", "int"), ("month", "long", "month", "int"), ("day", "long", "day", "int")], transformation_ctx = "applymapping1")
         resolvechoice2 = ResolveChoice.apply(frame = applymapping1, choice = "make_struct", transformation_ctx = "resolvechoice2")
 
         dropnullfields3 = DropNullFields.apply(frame = resolvechoice2, transformation_ctx = "dropnullfields3")

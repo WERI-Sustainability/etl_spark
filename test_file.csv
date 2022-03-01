@@ -1,7 +1,0 @@
-Record_ID, Timestamp, Country, Region, Mode, Vehicle, Origin, Destination, Distance, Load_Mass, Load_Volume, Refrigerant_Type, Refrigerante_Amount, Emission_Factor_Vehicle, Emission_Factor_Refrgerant
-1, 04/03/2021, Italy, Puglia, Truck, 3.5-7.5, Bari, Milan, 1000, 2, -, R410a, 50, 0.2, 2000
-2, 19/05/2021, Italy, Lombardia, Air, Fre-SH, Milan, Bari, 2000, 1, -, -, 0, 1.0, -
-3, 20/05/2021, Italy, Campania, Ship, Container 2000-2.999, Napoli, Bari, 4000, 6, -, R410a, 50, 0.05, 2000
-
-
-
