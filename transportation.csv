@@ -1,0 +1,10 @@
+date, country, load, distance, mode, vehicle, refrigerant_Type, refrigerant_Amount
+04/02/2022, Italy, 2000, 1000, Truck, 3.5-7.5, R410a, 50
+05/01/2022, Netherlands, 400, 2000, Air, Fre-SH, None, 0
+04/03/2021, Germany, 1000, 2340, Rail, Eletric, R410a, 70
+05/11/2021, Italy, 2000, 540, Rail, Electric, None, 0
+22/10/2021, France, 2230, 5940, Truck, 3.5-7.5, R410a, 50
+11/01/2021, Spain, 2000, 1000, Truck, 3.5-7.5, R410a, 50
+16/08/2020, Italy, 700, 2500, Air, 3.5-7.5, None, 0
+08/06/2020, Italy, 950, 1500, Ship, Container 2000-2.999, R410a, 50
+04/03/2020, Spain, 1350, 1270, Ship, Container 2000-2.999, R410a, 50

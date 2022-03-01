@@ -1,0 +1,35 @@
+[
+  {
+    "ParameterKey": "pS3BucketName",
+    "ParameterValue": "weri-transportation-bucket"
+  },
+  {
+    "ParameterKey": "pSourceFolder",
+    "ParameterValue": "source"
+  },
+  {
+    "ParameterKey": "pStageFolder",
+    "ParameterValue": "stage"
+  },
+  {
+    "ParameterKey": "pTransformFolder",
+    "ParameterValue": "transform"
+  },
+  {
+    "ParameterKey": "pErrorFolder",
+    "ParameterValue": "error"
+  },
+  {
+    "ParameterKey": "pArchiveFolder",
+    "ParameterValue": "archive"
+  },
+  {
+    "ParameterKey": "pEmailforNotification",
+    "ParameterValue": "giuseppe@weri.it"
+  },
+  {
+    "ParameterKey": "pDatasetSchema",
+    "ParameterValue": "{\"date\":{\"type\": \"datetime\", \"format\": \"%m/%d/%Y\" }, \"country\": {\"type\": \"string\"}, \"load\": {\"type\": [\"float\", \"integer\"]},\"Distance\": {\"type\": [\"float\", \"integer\"]},\"mode\": {\"type\": \"string\"},\"vehicle\": {\"type\": \"string\"},\"refrigerant_Type\": {\"type\": \"string\"},\"refrigerant_Amount\": {\"type\": [\"float\", \"integer\"]}"
+  }
+
+]
