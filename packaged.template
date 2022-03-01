@@ -109,7 +109,7 @@ Resources:
 
           datasink4 = glueContext.write_dynamic_frame.from_options(frame = dropnullfields3,
           connection_type = "s3", format_options = {"compression": "snappy"}, connection_options
-          = {"path": "s3://${pS3BucketName}/${pTransformFolder}","partitionKeys":["year","month","day"]},
+          = {"path": "s3://weri-transportation-bucket/${pTransformFolder}","partitionKeys":["year","month","day"]},
           format = "glueparquet", transformation_ctx = "datasink4")
 
           job.commit()
@@ -132,7 +132,7 @@ Resources:
       - Ref: LambdaLayer
       Description: Work with S3 Buckets!
       Handler: s3object.handler
-      CodeUri: s3://weri-test-etl-bucket/27874e5646399557ffa6ae611b8e1ee4
+      CodeUri: s3://weri-test-bucket/27874e5646399557ffa6ae611b8e1ee4
       Role:
         Fn::GetAtt:
         - LambdaRole
@@ -257,7 +257,7 @@ Resources:
           Action:
           - s3:List*
           Resource:
-            Fn::Sub: arn:aws:s3:::${pS3BucketName}
+            Fn::Sub: arn:aws:s3:::weri-transportation-bucket
         - Sid: s3putaccess
           Effect: Allow
           Action:
@@ -265,7 +265,7 @@ Resources:
           - s3:Put*
           - s3:Delete*
           Resource:
-            Fn::Sub: arn:aws:s3:::${pS3BucketName}/*
+            Fn::Sub: arn:aws:s3:::weri-transportation-bucket/*
   LambdaRole:
     Type: AWS::IAM::Role
     Properties:
@@ -359,7 +359,7 @@ Resources:
           Action:
           - s3:List*
           Resource:
-            Fn::Sub: arn:aws:s3:::${pS3BucketName}
+            Fn::Sub: arn:aws:s3:::weri-transportation-bucket
         - Sid: s3putaccess
           Effect: Allow
           Action:
@@ -367,13 +367,13 @@ Resources:
           - s3:Put*
           - s3:Delete*
           Resource:
-            Fn::Sub: arn:aws:s3:::${pS3BucketName}/*
+            Fn::Sub: arn:aws:s3:::weri-transportation-bucket/*
         - Sid: s3deletebucket
           Effect: Allow
           Action:
           - s3:DeleteBucket
           Resource:
-            Fn::Sub: arn:aws:s3:::${pS3BucketName}
+            Fn::Sub: arn:aws:s3:::weri-transportation-bucket
         - Sid: SNStopicaccess
           Effect: Allow
           Action: sns:Publish
@@ -401,7 +401,7 @@ Resources:
       VersioningConfiguration:
         Status: Enabled
       BucketName:
-        Fn::Sub: ${pS3BucketName}
+        Fn::Sub: weri-transportation-bucket
       NotificationConfiguration:
         LambdaConfigurations:
         - Event: s3:ObjectCreated:*
@@ -435,7 +435,7 @@ Resources:
         - Arn
       Principal: s3.amazonaws.com
       SourceArn:
-        Fn::Sub: arn:aws:s3:::${pS3BucketName}
+        Fn::Sub: arn:aws:s3:::weri-transportation-bucket
   ArchiveFunction:
     Type: AWS::Serverless::Function
     Properties:
@@ -444,7 +444,7 @@ Resources:
         - LambdaRole
         - Arn
       Handler: move_file.lambda_handler
-      CodeUri: s3://weri-test-etl-bucket/27874e5646399557ffa6ae611b8e1ee4
+      CodeUri: s3://weri-test-bucket/27874e5646399557ffa6ae611b8e1ee4
       Runtime: python3.7
       Timeout: 30
       Environment:
@@ -461,7 +461,7 @@ Resources:
         - BasicLambdaRole
         - Arn
       Handler: start_step_function.lambda_handler
-      CodeUri: s3://weri-test-etl-bucket/27874e5646399557ffa6ae611b8e1ee4
+      CodeUri: s3://weri-test-bucket/27874e5646399557ffa6ae611b8e1ee4
       Runtime: python3.7
       Timeout: 60
       Environment:
@@ -476,7 +476,7 @@ Resources:
         - LambdaRole
         - Arn
       Handler: start_crawler.lambda_handler
-      CodeUri: s3://weri-test-etl-bucket/27874e5646399557ffa6ae611b8e1ee4
+      CodeUri: s3://weri-test-bucket/27874e5646399557ffa6ae611b8e1ee4
       Runtime: python3.7
       Timeout: 60
   NotificationFunction:
@@ -487,7 +487,7 @@ Resources:
         - LambdaRole
         - Arn
       Handler: notification.lambda_handler
-      CodeUri: s3://weri-test-etl-bucket/27874e5646399557ffa6ae611b8e1ee4
+      CodeUri: s3://weri-test-bucket/27874e5646399557ffa6ae611b8e1ee4
       Runtime: python3.7
       Timeout: 30
       Environment:
@@ -502,7 +502,7 @@ Resources:
         - LambdaRole
         - Arn
       Handler: check_crawler.lambda_handler
-      CodeUri: s3://weri-test-etl-bucket/27874e5646399557ffa6ae611b8e1ee4
+      CodeUri: s3://weri-test-bucket/27874e5646399557ffa6ae611b8e1ee4
       Runtime: python3.7
       Timeout: 30
       Environment:
@@ -522,7 +522,7 @@ Resources:
         - LambdaRole
         - Arn
       Handler: validation.lambda_handler
-      CodeUri: s3://weri-test-etl-bucket/27874e5646399557ffa6ae611b8e1ee4
+      CodeUri: s3://weri-test-bucket/27874e5646399557ffa6ae611b8e1ee4
       Runtime: python3.8
       Timeout: 500
       Environment:
@@ -544,7 +544,7 @@ Resources:
         - LambdaRole
         - Arn
       Handler: start_codebuild.lambda_handler
-      CodeUri: s3://weri-test-etl-bucket/27874e5646399557ffa6ae611b8e1ee4
+      CodeUri: s3://weri-test-bucket/27874e5646399557ffa6ae611b8e1ee4
       Runtime: python3.6
       Timeout: 500
       Environment:
@@ -573,7 +573,7 @@ Resources:
             Action:
             - s3:List*
             Resource:
-              Fn::Sub: arn:aws:s3:::${pS3BucketName}
+              Fn::Sub: arn:aws:s3:::weri-transportation-bucket
           - Sid: s3putaccess
             Effect: Allow
             Action:
@@ -581,7 +581,7 @@ Resources:
             - s3:Put*
             - s3:Delete*
             Resource:
-              Fn::Sub: arn:aws:s3:::${pS3BucketName}/*
+              Fn::Sub: arn:aws:s3:::weri-transportation-bucket/*
           - Sid: glue
             Effect: Allow
             Action: glue:*
@@ -746,7 +746,7 @@ Resources:
       Command:
         Name: glueetl
         ScriptLocation:
-          Fn::Sub: s3://${pS3BucketName}/glue/gluejob.py
+          Fn::Sub: s3://weri-transportation-bucket/glue/gluejob.py
       ExecutionProperty:
         MaxConcurrentRuns: 20
       MaxRetries: 0
@@ -767,7 +767,7 @@ Resources:
       Targets:
         S3Targets:
         - Path:
-            Fn::Sub: s3://${pS3BucketName}/${pStageFolder}
+            Fn::Sub: s3://weri-transportation-bucket/${pStageFolder}
       Configuration: '{"Version":1.0,"Grouping":{"TableGroupingPolicy":"CombineCompatibleSchemas"}}'
   CrawlPartitionedFile:
     Type: AWS::Glue::Crawler
@@ -783,13 +783,13 @@ Resources:
       Targets:
         S3Targets:
         - Path:
-            Fn::Sub: s3://${pS3BucketName}/${pTransformFolder}
+            Fn::Sub: s3://weri-transportation-bucket/${pTransformFolder}
   LambdaLayer:
     Type: AWS::Serverless::LayerVersion
     Properties:
       LayerName: cfnresource-lib
       Description: My layer
-      ContentUri: s3://weri-test-etl-bucket/499095a01e3f9e85ae584d24cf9d2100
+      ContentUri: s3://weri-test-bucket/ec9517b1ac6f4bd9a6ce700075892c89
       CompatibleRuntimes:
       - python3.6
       - python3.7
